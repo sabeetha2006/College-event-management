@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    }
+
+    body{
+        background:#f4f4f4;
+    }
+
+    .dashboard{
+        width:95%;
+        margin:30px auto;
+    }
+
+    h1{
+        text-align:center;
+        color:#003366;
+        margin-bottom:20px;
+    }
+
+    .logout{
+        float:right;
+        background:#ff9800;
+        color:white;
+        padding:10px 20px;
+        text-decoration:none;
+        border-radius:5px;
+    }
+
+    .logout:hover{
+        background:#e68900;
+    }
+
+    #search{
+        width:300px;
+        padding:10px;
+        margin-bottom:20px;
+        border:1px solid #ccc;
+        border-radius:5px;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+        background:white;
+        box-shadow:0 0 10px rgba(0,0,0,.2);
+    }
+
+    th{
+        background:#003366;
+        color:white;
+        padding:12px;
+    }
+
+    td{
+        padding:10px;
+        border:1px solid #ddd;
+        text-align:center;
+    }
+
+    tr:nth-child(even){
+        background:#f2f2f2;
+    }
+
+    button{
+        padding:7px 14px;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;
+        color:white;
+    }
+
+    button{
+        background:red;
+    }
+
+    button:hover{
+        background:darkred;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <a href="admin.html" class="btn logout">Logout</a>
+
+    <h1>Admin Dashboard</h1>
+
+    <input
+    type="text"
+    id="search"
+    placeholder="Search by Name..."
+    onkeyup="searchTable()"
+    style="width:300px;padding:10px;margin-bottom:20px;">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Register No</th>
+                <th>Department</th>
+                <th>Year</th>
+                <th>Event</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="studentTable">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+fetch("http://localhost:5000/students")
+.then(response => response.json())
+.then(data => {
+
+    let rows = "";
+
+    data.forEach((student, index) => {
+
+        rows += `
+<tr>
+    <td>${index + 1}</td>
+    <td>${student.name}</td>
+    <td>${student.regno}</td>
+    <td>${student.department}</td>
+    <td>${student.year}</td>
+    <td>${student.event}</td>
+    <td>${student.phone}</td>
+    <td>${student.email}</td>
+    <td>
+        <button onclick="deleteStudent(${student.id})">Delete</button>
+    </td>
+</tr>
+`;
+
+    });
+
+    document.getElementById("studentTable").innerHTML = rows;
+
+})
+.catch(error => {
+
+    console.log(error);
+    alert("Unable to load student data.");
+
+});
+
+function searchTable() {
+
+    let input = document.getElementById("search");
+    let filter = input.value.toUpperCase();
+
+    let table = document.querySelector("table");
+    let tr = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < tr.length; i++) {
+
+        let td = tr[i].getElementsByTagName("td")[1];
+
+        if (td) {
+
+            let txt = td.textContent || td.innerText;
+
+            if (txt.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+
+        }
+
+    }
+
+}
+
+function deleteStudent(id){
+
+    if(confirm("Delete this student?")){
+
+        fetch("http://localhost:5000/students/"+id,{
+            method:"DELETE"
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            alert(data.message);
+            location.reload();
+        })
+        .catch(error=>{
+            console.log(error);
+        });
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

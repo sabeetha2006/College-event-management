@@ -1,0 +1,287 @@
+
+/* General */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* Navbar */
+.navbar{
+    background:#003366;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    flex-wrap:wrap;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    margin-right:15px;
+    border-radius:50%;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+}
+
+.nav-links li{
+    margin-left:20px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.nav-links a:hover,
+.nav-links .active{
+    color:#ffd700;
+}
+
+/* Hero Section */
+.hero{
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    url("image/nsn.jpg");
+    background-size:cover;
+    background-position:center;
+    height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+/* Button */
+.btn{
+    display:inline-block;
+    background:#ff9800;
+    color:white;
+    padding:12px 25px;
+    text-decoration:none;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#e68900;
+}
+
+/* About */
+.about{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.about h2{
+    margin-bottom:20px;
+    color:#003366;
+}
+
+/* Highlights */
+.highlights{
+    padding:50px 20px;
+    text-align:center;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.card{
+    background:white;
+    width:300px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin:15px 0;
+}
+
+.card p{
+    padding:0 15px 20px;
+}
+
+/* Events Page */
+.events{
+    padding:50px 20px;
+    text-align:center;
+}
+
+.event-container{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.event-card{
+    background:white;
+    width:320px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    overflow:hidden;
+    padding-bottom:20px;
+}
+
+.event-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.event-card h2{
+    margin:15px 0;
+}
+
+.event-card p{
+    margin:8px 15px;
+}
+
+/* Register Form */
+.register-section{
+    width:500px;
+    max-width:90%;
+    background:white;
+    margin:40px auto;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.register-section h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#003366;
+}
+
+.register-section label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.register-section input,
+.register-section select{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.register-section button{
+    width:100%;
+    margin-top:25px;
+}
+
+/* Thank You */
+.thankyou-section{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.thankyou-section h1{
+    color:green;
+    margin-bottom:20px;
+}
+
+.thankyou-section p{
+    font-size:18px;
+    margin:10px 0;
+}
+
+.thankyou-section .btn{
+    margin-top:25px;
+}
+
+/* Footer */
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:auto;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+    }
+
+    .nav-links{
+        margin-top:15px;
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .nav-links li{
+        margin:10px 0;
+    }
+
+    .hero-content h1{
+        font-size:30px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .cards,
+    .event-container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card,
+    .event-card{
+        width:90%;
+    }
+}

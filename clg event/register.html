@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - College Event Registration System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-section">
+                <img src="image/nsn logo.png" alt="College Logo" class="logo">
+                <h2>College Event Registration System</h2>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="register.html" class="active">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Registration Form -->
+    <section class="register-section">
+
+        <h1>Event Registration Form</h1>
+
+        <form id="registerForm" action="thankyou.html">
+
+            <!-- Name -->
+            <label for="name">Student Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <!-- Register Number -->
+            <label for="regno">Register Number</label>
+            <input
+                type="text"
+                id="regno"
+                name="regno"
+                placeholder="Enter Register Number"
+                required
+            >
+
+            <!-- Department -->
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="">Select Department</option>
+                <option>CSE</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>IT</option>
+                <option>AI&DS</option>
+                <option>MECH</option>
+                <option>CIVIL</option>
+            </select>
+
+            <!-- Year -->
+            <label for="year">Year</label>
+            <select id="year" name="year" required>
+                <option value="">Select Year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+            </select>
+
+            <!-- Event -->
+            <label for="event">Select Event</label>
+            <select id="event" name="event" required>
+                <option value="">Choose Event</option>
+                <option>Code Contest</option>
+                <option>Paper Presentation</option>
+                <option>Quiz Competition</option>
+            </select>
+
+            <!-- Phone -->
+            <label for="phone">Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter Phone Number"
+                pattern="[0-9]{10}"
+                required
+            >
+
+            <!-- Email -->
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter Email"
+                required
+            >
+
+            <!-- Submit -->
+            <button type="submit" class="btn">
+                Register
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Footer -->
+   <footer>
+
+        <p>
+            &copy; College Event Registration System |
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+</head>
+<body>
+
+    <!-- Exit Button -->
+    <a href="welcome.html" class="exit-btn" title="Exit">
+        <img src="image/icons8-exit-24 (1).png" alt="Exit" class="exit-icon">
+    </a>
+
+    <div class="login-container">
+
+        <form class="login-form" id="loginForm">
+
+            <h2>Admin Login</h2>
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="username" placeholder="Enter Username" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Enter Password" required>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+        </form>
+
+    </div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if(username=="sabee" && password=="2006"){
+        alert("Login Successful");
+        window.location.href="adminpage.html";
+    }
+    else{
+        alert("Invalid Username or Password");
+    }
+
+});
+</script>
+
+</body>
+</html>
