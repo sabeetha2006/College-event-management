@@ -8,19 +8,20 @@ app.use(cors());
 app.use(express.json());
 
 // MySQL Connection
+// MySQL Connection - Secure Configuration
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",   // Change if your MySQL password is different
-    database: "college_event"
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || "college_event",
+    port: Number(process.env.DB_PORT) || 3306
 });
 
 db.connect((err) => {
     if (err) {
-        console.log("Database Connection Failed");
-        console.log(err);
+        console.log("Database Connection Failed:", err.message);
     } else {
-        console.log("MySQL Connected");
+        console.log("MySQL Connected Successfully");
     }
 });
 
@@ -178,6 +179,8 @@ app.delete("/students/:id", (req, res) => {
 // Server
 // ======================
 
-app.listen(5000, () => {
-    console.log("Server Running on http://localhost:5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server Running on Port ${PORT}`);
 });
