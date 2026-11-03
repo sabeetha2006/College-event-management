@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             try {
 
-                const response = await fetch("http://localhost:5000/register", {
+                const response = await fetch("https://college-event-management-cnov.onrender.com/register", {
 
                     method: "POST",
 
