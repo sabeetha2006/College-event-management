@@ -10,11 +10,14 @@ app.use(express.json());
 // MySQL Connection
 // MySQL Connection - Secure Configuration
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "root",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME || "college_event",
-    port: Number(process.env.DB_PORT) || 3306
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT),
+    ssl: {
+        rejectUnauthorized: true
+    }
 });
 
 db.connect((err) => {
